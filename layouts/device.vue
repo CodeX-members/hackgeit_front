@@ -22,7 +22,7 @@
         </Sidebar>
 
         <!-- Header -->
-        <div class="h-[64px] flex items-center border-b sticky top-0 bg-white">
+        <div  class="z-[1000] h-[64px] flex items-center border-b sticky top-0 bg-white">
             <div class="px-2 flex items-center">
                 <img src="~assets/images/boulou_logo.png" alt="" srcset="" width="42" >
                 <div class="flex ml-5 text-2xl">
@@ -34,7 +34,6 @@
             <span class="flex-grow">  </span>
             <Button text icon="pi pi-bars" @click="showSidebar = true" />
         </div>
-
         <slot />
     </div>
 </template>

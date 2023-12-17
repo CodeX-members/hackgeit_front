@@ -10,6 +10,7 @@
         </div>
 
         <div class="flex flex-col mx-5 relative">
+            <span class="text-red-500 mb-5 " v-if="message"> {{  message }} </span>
             <div class="flex flex-col">
                 <span class="underline-text-purple mb-2 w-max text-xl"> Identifiant de l'appareil </span>
                 <InputText class="mb-5" v-model="deviceId" placeholder="ex : df12454dfdfg54dfg45" />
@@ -21,19 +22,44 @@
 
 <script setup>
 
+import { useGlobalStore } from "@/stores/global";
+import { storeToRefs } from 'pinia';
+
+const global = useGlobalStore()
+const { user,deviceId } = storeToRefs(global)
+
 const loading = ref(false)
-const deviceId = ref('')
 const router = useRouter()
 
+const message = ref('')
 
-function setLoading(){
+
+async function setLoading(){
     loading.value = true
 
-    setTimeout(() => {
-        loading.value = false
+    try {
+        const r = await $fetch('/api/seuil',{
+            method:"get",
+            query:{deviceId:deviceId.value}
+        })
 
-        router.push('/device-info')
-    }, 2000);
+        if(r.success){
+            router.push('/device-info')
+        }else{
+            message.value = r.error
+        }
+
+        console.log('====================================');
+        console.log(r);
+        console.log('====================================');
+
+    } catch (e) {
+        console.log('====================================');
+        console.log(e);
+        console.log('====================================');
+    }
+
+    loading.value = false
 }
 
 </script>

@@ -39,13 +39,13 @@ export default defineNuxtConfig({
     }
   },
 
-  // nitro: {
-  //   devProxy: {
-  //       "/api": {
-  //           target:"http://localhost:4044/api",
-  //           changeOrigin: true,
-  //           prependPath: true,
-  //       }
-  //   }
-  // },
+  nitro: {
+    devProxy: {
+        "/api": {
+            target:"http://localhost:3001/",
+            changeOrigin: true,
+            prependPath: true,
+        }
+    }
+  },
 })
