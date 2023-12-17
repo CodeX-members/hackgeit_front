@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+
+/* tailwind.css */
+@layer tailwind-base {
+    @tailwind base;
+  }
+  
+  @layer tailwind-utilities {
+    @tailwind components;
+    @tailwind utilities;
+  }
+
+  *{
+    font-family: 'Inconsolata', monospace;
+  }
+  
+
+  .underline-text{
+    @apply relative;
+  }
+
+  .underline-text::before{
+    content: '';
+    @apply absolute w-full bg-green-200 h-[30%];
+    z-index: -1;
+    bottom: 3px;
+  }
+
+  .underline-text-purple{
+    @apply relative;
+  }
+
+  .underline-text-purple::before{
+    content: '';
+    @apply absolute w-full bg-purple-200 h-[30%];
+    z-index: -1;
+    bottom: 3px;
+  }
+
+  .dropdown-sm{
+    @apply items-center;
+    height: 30px;
+  }
