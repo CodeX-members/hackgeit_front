@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules:['nuxt-primevue','@pinia/nuxt',],
+  modules:['nuxt-primevue','@pinia/nuxt'],
   pinia: {
     storesDirs: ['./stores/**'],
   },
